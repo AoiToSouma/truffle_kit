@@ -1,0 +1,74 @@
+# Cryptocompare
+selections[1]="1.  Cryptocompare"
+urls[1]="https://min-api.cryptocompare.com/data/price?fsym=TARGET_CURRENCY&tsyms=BASE_CURRENCY"
+paths[1]="BASE_CURRENCY"
+api_keys[1]=""
+options[1]=""
+explanations[1]="e.g.) XDC/USD -> Base Currency : USD / Target Currency : XDC"
+
+# Coingecko
+selections[2]="2.  Coingecko"
+urls[2]="https://api.coingecko.com/api/v3/simple/price?ids=TARGET_CURRENCY&vs_currencies=BASE_CURRENCY"
+paths[2]="TARGET_CURRENCY,BASE_CURRENCY"
+api_keys[2]=""
+options[2]=""
+explanations[2]="e.g.) plugin/usd -> Base Currency : usd / Target Currency : plugin"
+
+# Binance
+selections[3]="3.  Binance"
+urls[3]="https://api1.binance.com/api/v3/ticker/price?symbol=TARGET_CURRENCYBASE_CURRENCY"
+paths[3]="price"
+api_keys[3]=""
+options[3]=""
+explanations[3]="e.g.) XRP/USDT -> Base Currency : USDT / Target Currency : XRP"
+
+# Bitrue
+selections[4]="4.  Bitrue"
+urls[4]="https://openapi.bitrue.com/api/v1/ticker/price?symbol=TARGET_CURRENCYBASE_CURRENCY"
+paths[4]="price"
+api_keys[4]=""
+options[4]=""
+explanations[4]="e.g.) XDC/USDT -> Base Currency : USDT / Target Currency : XDC"
+
+# Kucoin
+selections[5]="5.  Kucoin"
+urls[5]="https://api.kucoin.com/api/v1/market/orderbook/level1?symbol=TARGET_CURRENCY-BASE_CURRENCY"
+paths[5]="data,price"
+api_keys[5]=""
+options[5]=""
+explanations[5]="e.g.) XDC/USDT -> Base Currency : USDT / Target Currency : XDC"
+
+# CMC *API KEY required
+selections[6]="6.  CMC"
+urls[6]="https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?symbol=TARGET_CURRENCY&convert=BASE_CURRENCY"
+paths[6]="data,TARGET_CURRENCY,quote,BASE_CURRENCY,price"
+api_keys[6]="your_api_key_code"
+options[6]='headers="[\\"X-CMC_PRO_API_KEY\\", \\"YOUR_API_KEY\\"]"'
+explanations[6]="e.g.) PLI/USDT -> Base Currency : USDT / Target Currency : PLI"
+
+# Coinranking *API KEY required
+# This URL is for XDC/USDT only
+selections[7]="7.  Coinranking"
+urls[7]="https://api.coinranking.com/v2/coin/77jGXSqWJ1ofG?referenceCurrencyUuid=yhjMzLPhuIDl"
+paths[7]="data,coin,price"
+api_keys[7]="your_api_key_code"
+options[7]='headers="[\\"x-access-token\\", \\"YOUR_API_KEY\\"]"'
+explanations[7]="This is for XDC/USDT only. Base Currency : blank / Target Currency : blank"
+
+# Coinpaprika
+# *free version
+selections[8]="8.  Coinpaprika free version"
+urls[8]="https://api.coinpaprika.com/v1/tickers/TARGET_CURRENCY?quotes=BASE_CURRENCY"
+paths[8]="quotes,BASE_CURRENCY,price"
+api_keys[8]=""
+options[8]=""
+explanations[8]="e.g.) Comtech Gold/USD -> Base Currency : USD / Target Currency : cgo-comtech-gold"
+
+# Coinpaprika
+# *paid version * API KEY required
+selections[9]="9.  Coinpaprika paid version"
+urls[9]="https://api-pro.coinpaprika.com/v1/tickers/cgo-comtech-gold?quotes=USD"
+paths[9]="quotes,USD,price"
+api_keys[9]="your_api_key_code"
+options[9]='headers="[\\"Authorization\\", \\"YOUR_API_KEY\\"]"'
+explanations[9]="e.g.) Comtech Gold/USD -> Base Currency : USD / Target Currency : cgo-comtech-gold"

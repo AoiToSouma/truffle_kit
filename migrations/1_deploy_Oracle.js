@@ -1,10 +1,7 @@
 const Operator = artifacts.require("Operator");
 const Xdc3 = require("xdc3");
-const execSync = require('child_process').execSync;
 const fs = require("fs");
 require("dotenv").config();
-
-//const PLIADDRESS = process.env["PLIADDRESS"];
 
 const PLIADDRESS = process.env.PLIADDRESS;
 const pluginNode = process.env.NODEADDRESS;
@@ -17,24 +14,25 @@ const account = xdc3.eth.accounts.privateKeyToAccount(deployed_private_key);
 const owner = account.address.replace(/^xdc/,'0x');
 
 let fname = "deployinfo.txt"
-
+let lname = "truffle.log"
 
 module.exports = async function(deployer) {
     await deployer.deploy(Operator,PLIADDRESS,owner);
     const oracle = Operator.address;
 
-    await overwrite_deployinfo(owner);
-    await add_deployinfo(oracle);
+    //await overwrite_deployinfo(owner);
+    //await add_deployinfo(oracle);
 
-    console.log("");
-    console.log("======================================================================");
-    console.log("Your Wallet Addres      : "+owner);
-    console.log("Oracle Contract Address : "+oracle);
-    console.log("");
+    await overwrite_deployinfo(oracle);
+
+    await add_log("[1. Oracle Contract Deploy]================================================");
+    await add_log("Your Wallet Address     : "+owner);
+    await add_log("Node Address            : "+pluginNode);
+    await add_log("Oracle Contract Address : "+oracle);
+    await add_log("");
     await setAuthorizedSenders(oracle);
-
-    console.log("======================================================================");
-    console.log("");
+    await add_log("===========================================================================");
+    await add_log("");
 }
 
 async function setAuthorizedSenders(oca) {
@@ -46,7 +44,7 @@ async function setAuthorizedSenders(oca) {
     const oraclecontract = new xdc3.eth.Contract(oracleABI, oca);
     const tx = {
         nonce: nonce,
-        data: oraclecontract.methods.setAuthorizedSenders([owner]).encodeABI(),
+        data: oraclecontract.methods.setAuthorizedSenders([pluginNode]).encodeABI(),
         gasPrice: gasPrice,
         to: oca,
         from: account.address,
@@ -61,8 +59,8 @@ async function setAuthorizedSenders(oca) {
     await xdc3.eth
         .sendSignedTransaction(signed.rawTransaction)
 
-    let status = await oraclecontract.methods.isAuthorizedSender(owner).call()
-    console.log('isAuthorizedSender('+owner+'): '+status);
+    let status = await oraclecontract.methods.isAuthorizedSender(pluginNode).call()
+    await add_log('isAuthorizedSender('+pluginNode+'): '+status);
 }
 
 async function overwrite_deployinfo(value) {
@@ -73,3 +71,6 @@ async function add_deployinfo(value) {
     fs.appendFileSync(fname, value+'\n');
 }
 
+async function add_log(value) {
+    fs.appendFileSync(lname, value+'\n');
+}

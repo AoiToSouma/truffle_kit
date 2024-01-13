@@ -64,7 +64,8 @@ module.exports = {
         provider: function() {
           return new HDWalletProvider(
             privatekey,
-            'https://erpc.xinfin.network'
+            'https://erpc.apothem.network'
+//            'https://apothem.xdcrpc.com'
           )
         },
         gas: 200000000,

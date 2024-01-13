@@ -11,6 +11,7 @@ git clone https://github.com/AoiToSouma/truffle_kit.git
 ```
 cd truffle_kit
 chmod +x *.sh
+chmod +x jobs/*.sh
 ```
 # npm install
 ```
@@ -22,6 +23,11 @@ npm install
 nano .env
 ```
 Edit "NODEADDRESS" and "PRIVATEKEY"
+
+```
+nano jobs/.api
+```
+If you want to execute an API that requires API-KEY, please edit "YOUR_API_KEY".
 
 ### Execute
 ```
