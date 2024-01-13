@@ -33,11 +33,10 @@ event RequestVolume(bytes32 indexed requestId, uint256 volume);
 * C. jobId: <job ID>
 *
 */
-constructor(address _pli,address _oracle,bytes32 _jobid) ConfirmedOwner(msg.sender) {
-
-setPluginToken(_pli);//Pli address as mentioned in ‘A’
-setPluginOracle(_oracle);//Oracle address
-jobId = _jobid;//Job ID as stored in ‘C’ JOB SUBMISSION
+constructor() ConfirmedOwner(msg.sender) {
+setPluginToken(<PLI_TOKEN>);//Pli address as mentioned in ‘A’
+setPluginOracle(<OCA>);//Oracle address
+jobId = "<JOBID>";//Job ID as stored in ‘C’ JOB SUBMISSION
 fee = (0.001 * 1000000000000000000) / 10;
 }
 
@@ -52,6 +51,13 @@ jobId,
 address(this),
 this.fulfill.selector
 );
+
+
+// Set the URL to perform the GET request on
+// req.add(
+// "get",
+// "<sample_api_link>/data/pricemultifull?fsyms=ETH&tsyms=USD"
+// );
 
 
 // Multiply the result by 1000000000000000000 to remove decimals
