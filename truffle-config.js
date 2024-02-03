@@ -5,7 +5,7 @@
  * them to suit your project as necessary.
  *
  * More information about configuration can be found at:
- * 
+ *
  * https://trufflesuite.com/docs/truffle/reference/configuration
  *
  * To deploy via Infura you'll need a wallet provider (like @truffle/hdwallet-provider)
@@ -20,7 +20,6 @@
 
 require('dotenv').config();
 const privatekey = process.env["PRIVATEKEY"];
-//console.log("privatekye",privatekey);
 const HDWalletProvider = require('@truffle/hdwallet-provider');
 
 module.exports = {
@@ -33,7 +32,7 @@ module.exports = {
      *
      * $ truffle test --network <network-name>
      */
-  
+
     // contracts_build_directory: "../client/src/contracts",
     networks: {
       // Useful for testing. The `development` name is special - truffle uses it by default
@@ -51,9 +50,9 @@ module.exports = {
         provider: function() {
           return new HDWalletProvider(
             privatekey,
-//            'https://erpc.apothem.network'
-            'https://apothem.xdcrpc.com'
-          )
+            //'https://erpc.apothem.network'
+            'https://apothem.xdcrpc.com',
+         )
         },
         gas: 20000000,
         gasPrice: 12500000000,     //12.5gwei
@@ -61,32 +60,36 @@ module.exports = {
         network_id: 51,
         confirmations: 5
       },
-      xinfin: {
+      mainnet: {
         provider: function() {
           return new HDWalletProvider(
             privatekey,
-            'https://erpc.xinfin.network'
+            //'https://erpc.xinfin.network'
+            'https://rpc.primenumbers.xyz/'
           )
         },
-        gas: 200000000,
-        network_id: 50,
-        confirmations: 5
+        gas: 250000000,
+        networkCheckTimeout: 99999,
+        network_id: 50
+        //confirmations: 5
+        //pollingInterval: 1800000,
+        //disableConfirmationListener: true
       },
     },
-  
+
     // Set default mocha options here, use special reporters, etc.
     mocha: {
       // timeout: 100000
     },
-  
+
     // Configure your compilers
     compilers: {
       solc: {
-        version: "pragma",      // Fetch exact version from solc-bin (default: truffle's version)
+        version: "0.8.7",
         // docker: true,        // Use "0.5.1" you've installed locally with docker (default: false)
         settings: {          // See the solidity docs for advice about optimization and evmVersion
          optimizer: {
-           enabled: false,
+           enabled: true,
            runs: 200
          },
         //  evmVersion: "byzantium"
