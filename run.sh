@@ -47,7 +47,7 @@ if [[ $network == apothem ]] || [[ $network == mainnet ]]; then
     if [[ $network == apothem ]]; then
         PLI_TOKEN='0x33f4212b027E22aF7e6BA21Fc572843C0D701CD1'
     else
-        PLI_TOKEN='0xff7412ea7c8445c46a8254dfb557ac1e48094391'
+        PLI_TOKEN='0xFf7412Ea7C8445C46a8254dFB557Ac1E48094391'
     fi
 
     rm -f truffle.log
