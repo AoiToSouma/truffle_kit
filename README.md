@@ -31,5 +31,5 @@ If you want to execute an API that requires API-KEY, please edit "YOUR_API_KEY".
 
 ### Execute
 ```
-./run.sh -n apothem
+./run.sh -n mainnet
 ```
